@@ -31,42 +31,50 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      color: Color(0xff00003D),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _listSlide.length,
-                itemBuilder: (_, currentIdenx) {
-                  bool activePage = currentIdenx == _currentPage;
-                  return InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed('/tela$_currentPage');
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: 100,
-                        bottom: 20,
+      body: Container(
+        color: Color(0xff00003D),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: _listSlide.length,
+                  itemBuilder: (_, currentIdenx) {
+                    bool activePage = currentIdenx == _currentPage;
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/tela$_currentPage');
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          top: 100,
+                          bottom: 20,
+                        ),
+                        child: SlideTile(
+                          activePage: activePage,
+                          image: _listSlide[currentIdenx]['image'],
+                        ),
                       ),
-                      child: SlideTile(
-                        activePage: activePage,
-                        image: _listSlide[currentIdenx]['image'],
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-          _buldBullets()
-        ],
+            _buldBullets()
+          ],
+        ),
       ),
-    ));
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        tooltip: 'Adicionar',
+        child: Icon(Icons.arrow_back),
+      ),
+    );
   }
 
   Widget _buldBullets() {
