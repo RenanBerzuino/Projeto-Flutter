@@ -16,7 +16,7 @@ class UserTile extends StatelessWidget {
       title: Text(user.name),
       subtitle: Text('telefone: ' + user.telefone),
       trailing: Container(
-        width: 80,
+        width: 100,
         child: Row(
           children: <Widget>[
             IconButton(

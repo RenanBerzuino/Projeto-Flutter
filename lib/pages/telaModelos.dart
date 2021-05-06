@@ -38,6 +38,26 @@ class TelaModelos extends StatelessWidget {
               ContainerText(
                 text: 'Camisa Social',
               ),
+              SizedBox(height: 20),
+              SizedBox(
+                width: 100,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    'Voltar',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue[400],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -72,7 +92,7 @@ class ContainerText extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 50,
+                fontSize: 40,
                 color: Colors.black,
               ),
             ),

@@ -15,18 +15,29 @@ class _TelaLoginState extends State<TelaLogin> {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('lib/imagens/Login.png'), fit: BoxFit.cover)),
+                image: AssetImage('lib/imagens/telaLogin.png'),
+                fit: BoxFit.cover)),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.only(
-          top: 250,
+          top: 50,
           left: 100,
           right: 100,
         ),
         child: ListView(
           children: [
             SizedBox(
-              height: 430,
+              height: 200,
+            ),
+            Center(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             Container(
               decoration: BoxDecoration(
@@ -46,7 +57,17 @@ class _TelaLoginState extends State<TelaLogin> {
             ),
             SizedBox(
               width: 50,
-              height: 50,
+              height: 40,
+            ),
+            Center(
+              child: Text(
+                'Senha',
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             Container(
               decoration: BoxDecoration(

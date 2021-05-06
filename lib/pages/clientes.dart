@@ -25,8 +25,8 @@ class _Cadastro_ClienteState extends State<Cadastro_Cliente> {
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.only(
           top: 50,
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         ),
         child: ListView.builder(
           itemCount: users.count,

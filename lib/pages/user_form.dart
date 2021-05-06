@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:projeto_flutter/models/User.dart';
 import 'package:projeto_flutter/provider/userProvider.dart';
 import 'package:provider/provider.dart';
@@ -67,63 +68,70 @@ class UserForm extends StatelessWidget {
               borderRadius: BorderRadius.circular(20), color: Colors.grey[200]),
           child: Form(
             key: _form,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  initialValue: _formData['name'],
-                  decoration: InputDecoration(labelText: 'Nome'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'É Necessario ter um nome';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) => _formData['name'] = value,
-                ),
-                TextFormField(
-                  initialValue: _formData['telefone'],
-                  decoration: InputDecoration(labelText: 'Telefone'),
-                  onSaved: (value) => _formData['telefone'] = value,
-                ),
-                TextFormField(
-                  initialValue: _formData['email'],
-                  decoration: InputDecoration(labelText: 'Email'),
-                  onSaved: (value) => _formData['email'] = value,
-                ),
-                TextFormField(
-                  initialValue: _formData['cnpj'],
-                  decoration: InputDecoration(labelText: 'CNPJ'),
-                  onSaved: (value) => _formData['cnpj'] = value,
-                ),
-                TextFormField(
-                  initialValue: _formData['avatarUrl'],
-                  decoration: InputDecoration(labelText: 'Url_Avatar'),
-                  onSaved: (value) => _formData['avatarUrl'] = value,
-                ),
-                SizedBox(height: 50),
-                SizedBox(
-                  width: 100,
-                  height: 50,
-                  child: ElevatedButton(
-                    child: Text('Salvar', style: TextStyle(fontSize: 20)),
-                    onPressed: () {
-                      final isValid = _form.currentState.validate();
-                      if (isValid) {
-                        _form.currentState.save();
-                        Provider.of<Users>(context, listen: false).put(
-                          User(
-                            id: _formData['id'],
-                            telefone: _formData['telefone'],
-                            name: _formData['name'],
-                            email: _formData['email'],
-                            cnpj: _formData['cnpj'],
-                            avatarUrl: _formData['avatarUrl'],
-                          ),
-                        );
-                        Navigator.of(context).pop();
-                      }
-                    },
-                  ),
+            child: ListView(
+              children: [
+                Column(
+                  children: <Widget>[
+                    TextFormField(
+                      initialValue: _formData['name'],
+                      decoration: InputDecoration(labelText: 'Nome'),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'É Necessario ter um nome';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => _formData['name'] = value,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.number,
+                      initialValue: _formData['telefone'],
+                      decoration: InputDecoration(labelText: 'Telefone'),
+                      onSaved: (value) => _formData['telefone'] = value,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      initialValue: _formData['email'],
+                      decoration: InputDecoration(labelText: 'Email'),
+                      onSaved: (value) => _formData['email'] = value,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.number,
+                      initialValue: _formData['cnpj'],
+                      decoration: InputDecoration(labelText: 'CNPJ'),
+                      onSaved: (value) => _formData['cnpj'] = value,
+                    ),
+                    TextFormField(
+                      initialValue: _formData['avatarUrl'],
+                      decoration: InputDecoration(labelText: 'Url_Avatar'),
+                      onSaved: (value) => _formData['avatarUrl'] = value,
+                    ),
+                    SizedBox(height: 50),
+                    SizedBox(
+                      width: 100,
+                      height: 50,
+                      child: ElevatedButton(
+                        child: Text('Salvar', style: TextStyle(fontSize: 20)),
+                        onPressed: () {
+                          final isValid = _form.currentState.validate();
+                          if (isValid) {
+                            _form.currentState.save();
+                            Provider.of<Users>(context, listen: false).put(
+                              User(
+                                id: _formData['id'],
+                                telefone: _formData['telefone'],
+                                name: _formData['name'],
+                                email: _formData['email'],
+                                cnpj: _formData['cnpj'],
+                                avatarUrl: _formData['avatarUrl'],
+                              ),
+                            );
+                            Navigator.of(context).pop();
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

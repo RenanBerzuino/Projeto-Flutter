@@ -83,24 +83,27 @@ class _TelaPedidoState extends State<TelaPedido> {
                           SizedBox(height: 5),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.3,
-                            height: MediaQuery.of(context).size.height * 0.05,
+                            height: MediaQuery.of(context).size.height * 0.044,
                             padding: EdgeInsets.symmetric(horizontal: 4.5),
                             decoration: BoxDecoration(
                                 color: Colors.grey[400],
                                 borderRadius: BorderRadius.circular(5)),
-                            child: DropdownButton(
-                              hint: Text('Tecidos'),
-                              value: valueChoose,
-                              icon: Icon(Icons.arrow_drop_down),
-                              onChanged: (newValue) {
-                                setState(() {
-                                  valueChoose = newValue;
-                                });
-                              },
-                              items: listTipoTecido.map((valueItem) {
-                                return DropdownMenuItem(
-                                    value: valueItem, child: Text(valueItem));
-                              }).toList(),
+                            child: Expanded(
+                              flex: 1,
+                              child: DropdownButton(
+                                hint: Text('Tecidos'),
+                                value: valueChoose,
+                                icon: Icon(Icons.arrow_drop_down),
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    valueChoose = newValue;
+                                  });
+                                },
+                                items: listTipoTecido.map((valueItem) {
+                                  return DropdownMenuItem(
+                                      value: valueItem, child: Text(valueItem));
+                                }).toList(),
+                              ),
                             ),
                           ),
                         ],

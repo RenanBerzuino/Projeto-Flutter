@@ -35,11 +35,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       color: Color(0xff00003D),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.only(
-        top: 50,
-        left: 20,
-        right: 20,
-      ),
       child: Column(
         children: <Widget>[
           Expanded(
@@ -55,8 +50,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                     },
                     child: Container(
                       margin: EdgeInsets.only(
-                        top: 140,
-                        bottom: 200,
+                        top: 100,
+                        bottom: 20,
                       ),
                       child: SlideTile(
                         activePage: activePage,
